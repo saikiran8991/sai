@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import com.example.easynotes.entity.Role;
 import com.example.easynotes.entity.User; 
 import com.example.easynotes.repository.UserRepository;
-  
-@Service
+    
+@RestController
 public class UserService { 
 	
-	@Autowired
+	@Autowired 
 	UserRepository userRepository;
 	
 	public void createUser(User user) {
@@ -21,10 +21,9 @@ public class UserService {
 		user.setPassword(encoder.encode(user.getPassword()));
 		Role userRole = new Role();
 		List<Role> roles = new ArrayList<>(); 
-		roles.add(userRole); 
-		user.setRoles(roles);
-		userRepository.save(user); 
-		 
+		roles.add(userRole);    
+		user.setRoles(roles);      
+		userRepository.save(user); 	 
 	}
 	public void createAdmin(User user) {  
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -32,14 +31,18 @@ public class UserService {
 		Role userRole = new Role();
 		List<Role> roles = new ArrayList<>();
 		roles.add(userRole);
-		user.setRoles(roles);
+		user.setRoles(roles);  
 		userRepository.save(user);   
-		 
-	}    
-	 
-	public User findOne(String email) {
-		return userRepository.getOne(email);
-	}
+	}        
+	    
+	@RequestMapping ("/users") 
+	public List<User> findAll() {    
+		return userRepository.findAll();  
+	} 
 	
-
-}
+	@RequestMapping ("/users/{name}")
+	public List<User>  findByName(String name) { 
+		
+		return userRepository.findByName(name);
+	}
+} 

@@ -1,6 +1,6 @@
 package com.example.easynotes.entity;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,14 +14,15 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 @Entity
-public class User { 
-     @Id  
+public class User {  
+    
+	 @Id  
      @Email 
-     @NotEmpty 
-     @Column(unique = true) 
+     @NotEmpty    
+     @Column (unique = true) 
 	private String email;
-     @NotEmpty
-	private String name;  
+     @NotEmpty 
+	private String name;     
      @Size (min = 4) 
 	private String password; 
      
@@ -33,11 +34,11 @@ public class User {
          inverseJoinColumns= {@JoinColumn(name ="ROLE_NAME",referencedColumnName = "name" )})
 	private List<Role> roles;
 
-	public String getEmail() {  
+	public String getEmail() {   
 		return email;
-	}
+	} 
 
-	public void setEmail(String email) {
+	public void setEmail(String email) {  
 		this.email = email;
 	}
 
@@ -60,14 +61,14 @@ public class User {
 	public List<Task> getTasks() {
 		return tasks;
 	} 
-
-	public void setTasks(List<Task> tasks) {
+ 
+	public void setTasks(List<Task> tasks) { 
 		this.tasks = tasks;
 	}
 
 	public List<Role> getRoles() {
 		return roles;
-	}
+	} 
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;

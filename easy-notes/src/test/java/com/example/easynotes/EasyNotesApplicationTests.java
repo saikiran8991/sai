@@ -22,36 +22,36 @@ import com.example.easynotes.services.UserService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @EnableAutoConfiguration
+ 
+public class EasyNotesApplicationTests {   
 
-public class EasyNotesApplicationTests { 
-
-	@Autowired
+	@Autowired 
 	UserService userService;   
-	@Autowired
-	TaskService taskService; 
-	
+	@Autowired 
+	TaskService taskService;   
+	/*
 	 @Before(value = "")    
-	public void initDb() {    
-		{
+	public void initDb() {     
+		{ 
 			User newUser = new User("testUser@gmail.com","saikiran","12345678");
 			userService.createUser(newUser);
 		}
-		 
+		  
 		{
 			User newUser = new User("testAdmin@gmail.com","saikiran","12345678");
 			userService.createUser(newUser);
 		}
-		Task userTask = new Task ("4-5-2019","1:00","4:00","your have to stay here");
+		Task userTask = new Task ("4-5-2019","1:00","4:00","your have to stay here"); 
 		User user = userService.findOne("testUser@gmail.com");
 		taskService.addTask(userTask, user);
 		
-	} 
-	   
+	}  
+	    
 	@Test      
     public void testUser() {  
   	  User user = userService.findOne("testUser@mail.com");
         assertNotNull(user);
-  	  User admin = userService.findOne("testAdmin@mail.com");
+  	  User admin = userService.findOne("testAdmin@mail.com"); 
   	  assertEquals(admin.getEmail(),"testAdmin@mail.com");
     }
     
@@ -62,5 +62,5 @@ public class EasyNotesApplicationTests {
   	  assertNotNull(task);  
     } 
 	
-
+*/
 }
