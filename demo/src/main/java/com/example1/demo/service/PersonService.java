@@ -9,7 +9,7 @@ import com.example1.demo.entity.Person;
 import com.example1.demo.repository.PersonRepository;
 
 @Service 
-public class PersonService {  
+public class PersonService {    
 
 	@Autowired
 	PersonRepository personRepository;
@@ -17,7 +17,7 @@ public class PersonService {
 	public List<Person> findAll(){  
 		return personRepository.findAll();
 	}
-	
+	 
 	public Optional<Person> findById(Long id) {
 		return personRepository.findById(id);
 	} 
