@@ -1,42 +1,36 @@
 package com.employees.timesheet.core.entity;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import javax.persistence.Entity;
+
+import java.util.Date;
+import javax.persistence.Entity;  
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;  
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table (name = "employeedetails")  
 
-@Entity (name = "EmployeeDetails") 
-
-public class Employee {  
-
-	@Id    
-	@GeneratedValue 
-	private Long       empid; 
-	private String     firstName;  
-	private String     lastName;  
-	private String     userName; 
-	private LocalDate  date; 
-	private String     day;
-	private String     phoneNumber;
-	private String     alternatePhoneNumber;
-	private String     bloodGroup;
-	private Date       dateOfBirth; 
-	private String     address;
-	private String     Email;
-	private String     departmentName; 
-	private LocalTime  startTime;
-	private LocalTime  endTime;
-	private LocalTime  totalHours; 
-	private String     totalWorkingDays;
+public  class Employee  {      
 	
-	public Long getEmpid() {
-		return empid; 
+	@Id       
+	@GeneratedValue (strategy = GenerationType.IDENTITY)  	 
+	private Long          id;   
+	private String        firstName;           
+	private String        lastName;        
+	private String        employeeName;     
+	private String        phoneNumber;   
+	private String        alternatePhoneNumber;          
+	private String        bloodGroup;       
+	private Date          dateOfBirth;     
+	private String        address;      
+	private String     	  email; 
+	private Date          joiningDate;
+	public Long getId() {
+		return id; 
 	}
-	public void setEmpid(Long empid) {
-		this.empid = empid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -50,23 +44,11 @@ public class Employee {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getUserName() {
-		return userName;
+	public String getEmployeeName() {
+		return employeeName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public LocalDate getDate() {
-		return date;
-	}
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-	public String getDay() {
-		return day;
-	}
-	public void setDay(String day) {
-		this.day = day;
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -99,66 +81,35 @@ public class Employee {
 		this.address = address;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
-	public String getDepartmentName() {
-		return departmentName;
+	public Date getJoiningDate() {
+		return joiningDate;
 	}
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
+	public void setJoiningDate(Date joiningDate) {
+		this.joiningDate = joiningDate;
 	}
-	public LocalTime getStartTime() {
-		return startTime;
-	}
-	public void setStartTime(LocalTime startTime) {
-		this.startTime = startTime;
-	}
-	public LocalTime getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(LocalTime endTime) {
-		this.endTime = endTime;
-	}
-	public LocalTime getTotalHours() {
-		return totalHours;
-	}
-	public void setTotalHours(LocalTime totalHours) {
-		this.totalHours = totalHours;
-	}
-	public String getTotalWorkingDays() {
-		return totalWorkingDays;
-	}
-	public void setTotalWorkingDays(String totalWorkingDays) {
-		this.totalWorkingDays = totalWorkingDays;
-	}
-	public Employee(Long empid, String firstName, String lastName, String userName, LocalDate date, String day,
-			String phoneNumber, String alternatePhoneNumber, String bloodGroup, Date dateOfBirth, String address,
-			String email, String departmentName, LocalTime startTime, LocalTime endTime, LocalTime totalHours,
-			String totalWorkingDays) {
-	
-		this.empid = empid;
+	public Employee(Long id, String firstName, String lastName, String employeeName, String phoneNumber,
+			String alternatePhoneNumber, String bloodGroup, Date dateOfBirth, String address, String email,
+			Date joiningDate) {
+
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.userName = userName;
-		this.date = date;
-		this.day = day;
+		this.employeeName = employeeName;
 		this.phoneNumber = phoneNumber;
 		this.alternatePhoneNumber = alternatePhoneNumber;
 		this.bloodGroup = bloodGroup;
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
-		Email = email;
-		this.departmentName = departmentName;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.totalHours = totalHours;
-		this.totalWorkingDays = totalWorkingDays;
-	} 
-	public Employee() {
-		 
+		this.email = email;
+		this.joiningDate = joiningDate;
 	}
-	
+	public Employee() {
+		
+	}  
+	  
 }

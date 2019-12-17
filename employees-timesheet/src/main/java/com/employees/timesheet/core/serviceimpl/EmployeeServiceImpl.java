@@ -1,67 +1,46 @@
 package com.employees.timesheet.core.serviceimpl;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-
+import java.util.Optional;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.employees.timesheet.core.entity.Employee;
 import com.employees.timesheet.core.repository.EmployeeRepository;
 import com.employees.timesheet.core.service.EmployeeService;
 
-@Component 
-public class EmployeeServiceImpl implements EmployeeService {
-	
-	@Autowired   
-	private EmployeeRepository employeeRepository; 
-	 
-	public Employee findById(Long id) {
-		Iterable<Employee> datas = employeeRepository.findByempId(id);
-		Employee dto = null; 
-		return datas.iterator().next();
-		     
-	}
-	
+  
+@Component   
+public class EmployeeServiceImpl implements EmployeeService { 
 	  
-	 public List<Employee> delete(Long id) {  
+	@Autowired  (required = false)   
+	private EmployeeRepository employeeRepository;     
+	   
+	public Optional<Employee> findById(Long id) {
+	return employeeRepository.findById(id);    
+     
+	}           
+    public List<Employee> delete(Long id) {      
 		 employeeRepository.deleteById(id);
-		 return null;
-		 
-	 }
-	  
-	  public void addEmployee(Employee employee) {
-			  employeeRepository.save(employee);
-			 
-		}    
- 
- 
-	  public List<Employee> findAllEmployees(){
-		  List<Employee> employee = new ArrayList<>();
-		  employeeRepository.findAll().forEach(employee::add);
-		  return employee; 
-    	
-	  }   
+		       return null; 	   
+	 }    
+       
 	
-    public Employee updateEmployee(Long id,Employee employee) {
-	 Employee employee1 = employeeRepository.save(employee);
-	 return employee1;
-	 
- }
+	public List<Employee> findAllEmployees(){  
+		  return employeeRepository.findAll();  
+		   
+	  } 
 
 
-	@Override
-	public void save(Employee newemployee) {
-		// TODO Auto-generated method stub
+	public void addEmployee(Employee employee) { 
+		employeeRepository.save(employee);
 		
 	}
+	
+	public Employee updateEmployee( Employee employee) { 
+		return employeeRepository.save(employee);
 
-     
-	  
-
-}
+		  
+	}    
+   
+} 
+   
