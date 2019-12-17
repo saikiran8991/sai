@@ -7,7 +7,8 @@ import javax.persistence.ManyToMany;
 @Entity 
 public class Role {   
 	@Id   
-	private String name;   
+	private String name; 
+	private long id;
 	@ManyToMany (mappedBy="roles")
 	private List<User> users;
 
